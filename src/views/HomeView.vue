@@ -18,12 +18,15 @@
         <p v-if="!serverErron && mapboxSearchResults.length === 0">
           No results matched
         </p>
-        <li
-          v-for="searchResult in mapboxSearchResults"
-          class="py-2 cursor-pointer"
-        >
-          {{ searchResult.cityName }}, {{ searchResult.country }}
-        </li>
+        <template v-else>
+          <li
+            v-for="searchResult in mapboxSearchResults"
+            class="py-2 cursor-pointer"
+            @click="previewCity(searchResult.lat, searchResult.lon)"
+          >
+            {{ searchResult.cityName }}, {{ searchResult.country }}
+          </li>
+        </template>
       </ul>
     </div>
   </main>
@@ -32,6 +35,9 @@
 <script setup>
   import axios from 'axios';
   import { ref } from 'vue';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
   const searchQuery = ref('');
   const queryTimeout = ref(null);
   const mapboxSearchResults = ref(null);
@@ -57,5 +63,12 @@
       }
       mapboxSearchResults.value = null;
     }, 500);
+  };
+
+  const previewCity = (lat, lon) => {
+    router.push({
+      name: "cityView",
+      params: { lat, lon },
+    })
   };
 </script>
