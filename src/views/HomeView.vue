@@ -8,6 +8,17 @@
         placeholder="Search for a city" 
         class="py-2 px-1 w-full bg-transparent border-b •focus: border-weather-secondary focus: outline-none focus: shadow-[Opx_1px_0_0_#004E71]"
       >
+      <ul 
+        class="absolute text-white w-full shadow-md py-2 px-1 top-[66]"
+        v-if="mapboxSearchResults"
+      >
+        <li
+          v-for="searchResult in mapboxSearchResults"
+          class="py-2 cursor-pointer"
+        >
+          {{ searchResult.cityName }}, {{ searchResult.country }}
+        </li>
+      </ul>
     </div>
   </main>
 </template>
@@ -24,11 +35,16 @@
     queryTimeout.value = setTimeout(async () => {
       if (searchQuery.value != "") {
         const result = await axios.get('/api/static/exports/cities_20000.csv');
-        mapboxSearchResults.value = result;
-        console.log(mapboxSearchResults.value);
+        const splitedCSVResult = result.data.split('\n');
+        const filteredResults = splitedCSVResult.filter((row) => row.includes(searchQuery.value)).slice(0, 10);
+        const parsedResults = filteredResults.map((res) => {
+          const sep = res.split(',');
+          return {cityName: sep[1], country: sep[4], lat: sep[5], lon: sep[6]}
+        });
+        mapboxSearchResults.value = parsedResults;
         return
       }
       mapboxSearchResults.value = null;
-    }, 300);
+    }, 500);
   };
 </script>
