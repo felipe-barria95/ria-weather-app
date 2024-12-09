@@ -15,7 +15,10 @@
             class="flex-grow flex justify-center py-3 shadow-md cursor-pointer responsive-text"
             @click="previewCity(city.lat, city.lon)"
         >
-            <p>{{ city.cityName }}, {{ city.country }}</p>
+            <div class="flex responsive-item gap-1 justify-center center-content items-center">
+                <p>{{ city.cityName }}</p>
+                <p>{{ city.country }}</p>
+            </div>
         </div>
     </div>
 </template>
@@ -59,13 +62,14 @@ const previewCity = (lat, lon) => {
 </script>
 
 <style scoped>
-.responsive-text {
-    font-size: 16px;
+  .responsive-item {
+    flex-direction: row;
 }
 
 @media (max-width: 768px) {
-    .responsive-text {
-        font-size: 14px;
+    .responsive-item {
+        flex-direction: column;
     }
 }
+
 </style>

@@ -8,14 +8,3 @@
 
 <script setup></script>
 
-<style scoped>
-.responsive-text {
-    font-size: 16px;
-}
-
-@media (max-width: 768px) {
-    .responsive-text {
-        font-size: 14px;
-    }
-}
-</style>

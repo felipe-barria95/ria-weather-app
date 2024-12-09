@@ -26,4 +26,13 @@
   .page-enter-from {
     opacity: 0;
   }
+  .responsive-text {
+    font-size: 16px;
+}
+
+  @media (max-width: 768px) {
+      .responsive-text {
+          font-size: 14px;
+      }
+  }
 </style>

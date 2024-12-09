@@ -44,7 +44,7 @@
             <div class="mx-8 text-white">
                 <h2 class="mb-4">Hourly Weather</h2>
                 <div class="flex items-center justify-center">
-                    <div class="flex gap-10 items-center">
+                    <div class="flex gap-4 items-center">
                         <div
                             v-for="i in hourRange"
                             :key="weatherData.list[i].dt"
@@ -122,17 +122,6 @@
 defineProps({
     weatherData: Object,
 })
-const hourRange = window.innerWidth <= 768 ? 5 : 7
+const hourRange = window.innerWidth <= 768 ? 5 : 9
 </script>
 
-<style scoped>
-.responsive-text {
-    font-size: 16px;
-}
-
-@media (max-width: 768px) {
-    .responsive-text {
-        font-size: 14px;
-    }
-}
-</style>
