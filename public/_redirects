@@ -1,0 +1,2 @@
+/weatherbitapi/* https://cdn.weatherbit.io/:splat 200
+/weathermapapi/* https://api.openweathermap.org/:splat 200
