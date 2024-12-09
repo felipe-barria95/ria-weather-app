@@ -3,7 +3,31 @@
         <CityViewSkeleton />
     </div>
     <div v-else>
-        <CityDetail :weatherData="weatherData"/>
+        <div class="flex justify-center text-white gap-4 items-center py-8">
+            <p>
+                Last Updated
+                {{
+                    new Date().toLocaleDateString('en-us', {
+                        weekday: 'short',
+                        day: '2-digit',
+                        month: 'long',
+                    })
+                }}
+                {{
+                    new Date().toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: false,
+                        timeZone: 'UTC',
+                    })
+                }}
+            </p>
+            <i
+                class="fa-solid fa-rotate cursor-pointer"
+                @click="getWeatherData(route.params.lat, route.params.lon)"
+            ></i>
+        </div>
+        <CityDetail :weatherData="weatherData" />
     </div>
 </template>
 
@@ -32,7 +56,7 @@ const getWeatherData = async (lat, lon) => {
             currentDate.getTime() + offsetSeconds * 1000
         )
         response.data.current = adjustedDate
-        weatherData.value = response.data;
+        weatherData.value = response.data
     } catch (err) {
         console.log(err)
     } finally {
@@ -42,14 +66,15 @@ const getWeatherData = async (lat, lon) => {
 
 getWeatherData(route.params.lat, route.params.lon)
 
-
 import { onBeforeRouteUpdate } from 'vue-router'
 
 onBeforeRouteUpdate((to, from, next) => {
-    if (to.params.lat !== from.params.lat || to.params.lon !== from.params.lon) {
+    if (
+        to.params.lat !== from.params.lat ||
+        to.params.lon !== from.params.lon
+    ) {
         getWeatherData(to.params.lat, to.params.lon)
     }
     next()
 })
-
 </script>

@@ -79,11 +79,11 @@ const getSearchResults = () => {
 }
 
 const previewCity = (lat, lon) => {
-    searchQuery.value = '';
-    mapboxSearchResults.value = null;
+    searchQuery.value = ''
+    mapboxSearchResults.value = null
     router.push({
         name: 'cityView',
         params: { lat, lon },
-    });
-};
+    })
+}
 </script>

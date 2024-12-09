@@ -1,28 +1,22 @@
 <template>
     <div class="flex flex-col flex-1 items-center">
-        <div class="flex flex-col items-center text-white py-12">
+        <div class="flex flex-col items-center text-white">
             <h1 class="text-4xl mb-2">
                 {{ weatherData.city.name }},
                 {{ weatherData.city.country }}
             </h1>
             <p class="text-sm mb-12">
                 {{
-                    new Date(weatherData.current).toLocaleDateString(
-                        'en-us',
-                        {
-                            weekday: 'short',
-                            day: '2-digit',
-                            month: 'long',
-                        }
-                    )
+                    new Date(weatherData.current).toLocaleDateString('en-us', {
+                        weekday: 'short',
+                        day: '2-digit',
+                        month: 'long',
+                    })
                 }}
                 {{
-                    new Date(weatherData.current).toLocaleTimeString(
-                        'en-us',
-                        {
-                            timeStyle: 'short',
-                        }
-                    )
+                    new Date(weatherData.current).toLocaleTimeString('en-us', {
+                        timeStyle: 'short',
+                    })
                 }}
             </p>
             <p class="text-8xl mb-8">
@@ -30,8 +24,7 @@
             </p>
             <p>
                 Feels like
-                {{ Math.round(weatherData.list[0].main.feels_like) }}&deg;
-                C
+                {{ Math.round(weatherData.list[0].main.feels_like) }}&deg; C
             </p>
             <p class="capitalize">
                 {{ weatherData.list[0].weather[0].description }}
@@ -71,9 +64,7 @@
                             />
                             <p>
                                 {{
-                                    Math.round(
-                                        weatherData.list[i].main.temp
-                                    )
+                                    Math.round(weatherData.list[i].main.temp)
                                 }}&deg; C
                             </p>
                         </div>
