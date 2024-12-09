@@ -15,7 +15,9 @@
                 }}
                 {{
                     new Date(weatherData.current).toLocaleTimeString('en-us', {
-                        timeStyle: 'short',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        timeZone: 'UTC',
                     })
                 }}
             </p>
@@ -51,9 +53,10 @@
                             <p class="whitespace-nowrap">
                                 {{
                                     new Date(
-                                        weatherData.list[i].dt * 1000
+                                        weatherData.list[i].dt * 1000 + weatherData.offsetSeconds * 1000
                                     ).toLocaleTimeString('en-US', {
                                         hour: 'numeric',
+                                        timeZone: 'UTC',
                                     })
                                 }}
                             </p>

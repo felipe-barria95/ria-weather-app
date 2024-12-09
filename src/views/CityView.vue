@@ -17,8 +17,6 @@
                     new Date().toLocaleTimeString('en-US', {
                         hour: '2-digit',
                         minute: '2-digit',
-                        hour12: false,
-                        timeZone: 'UTC',
                     })
                 }}
             </p>
@@ -56,6 +54,7 @@ const getWeatherData = async (lat, lon) => {
             currentDate.getTime() + offsetSeconds * 1000
         )
         response.data.current = adjustedDate
+        response.data.offsetSeconds = offsetSeconds
         weatherData.value = response.data
     } catch (err) {
         console.log(err)
