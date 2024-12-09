@@ -1,13 +1,13 @@
 <template>
-    <div 
-        v-for="city in cities" 
-        :key="city.id"
-        class="flex py-6 px-3 bg-weather-secondary rounded-md shadow-md cursor-pointer my-2"
-        @click="previewCity(city.lat, city.lon)"
-    >
-        <div class="flex flex-col flex-1">
-            <h2 class="text-3xl">{{ city.cityName }}</h2>
-            <h3>{{ city.country }}</h3>
+    <div class="flex flex-row w-full">
+        <div
+            v-for="city in cities"
+            :key="city.id"
+            :class="{'bg-weather-selected': city.lat === route.params.lat, 'bg-weather-secondary': !city.lat === route.params.lat}"
+            class="flex-grow flex justify-center py-3 shadow-md cursor-pointer"
+            @click="previewCity(city.lat, city.lon)"
+        >
+            <h3>{{ city.cityName }}, {{ city.country }}</h3>
         </div>
     </div>
 </template>

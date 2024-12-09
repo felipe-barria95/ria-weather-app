@@ -21,13 +21,13 @@
 </template>
 
 <script setup>
-defineEmits(['close-modal'])
-defineProps({
-    modalActive: {
-        type: Boolean,
-        default: false,
-    },
-})
+    defineEmits(['close-modal'])
+    defineProps({
+        modalActive: {
+            type: Boolean,
+            default: false,
+        },
+    })
 </script>
 
 <style scoped>

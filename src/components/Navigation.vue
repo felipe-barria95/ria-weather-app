@@ -17,8 +17,8 @@
                 ></i>
                 <i class="fa-solid fa-plus text-xl Chover: text-weather-secondary duration-150 cursor-pointer"></i>
             </div>
-            <BaseModal 
-                :modalActive="modalActive" 
+            <BaseModal
+                :modalActive="modalActive"
                 @close-modal="toggleModal"
             >
                 <h1 class="text-black">Hello from Modal</h1>
