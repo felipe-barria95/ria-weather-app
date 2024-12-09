@@ -1,6 +1,6 @@
 <template>
     <main class="container text-white">
-        <div class="pt-4 mb-8 relative">
+        <div class="pt-4 mb-8">
             <input
                 type="text"
                 v-model="searchQuery"
