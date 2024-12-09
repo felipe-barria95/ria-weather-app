@@ -45,34 +45,38 @@
 
         <hr class="border-white border-opacity-10 border w-full" />
 
-        <div class="text-white max-w-screen-md w-full py-12">
-            <h2 class="mb-4 mx-25">Hourly Weather</h2>
-            <div class="flex flex-col flex-1 items-center">
-                <div class="flex gap-10 overflow-x-scroll">
-                    <div
-                        v-for="i in 8"
-                        :key="weatherData.data.list[i].dt"
-                        class="flex flex-col gap-4 items-center"
-                    >
-                        <p class="whitespace-nowrap text-md">
-                            {{
-                                new Date(
-                                    weatherData.data.list[i].dt * 1000
-                                ).toLocaleTimeString('en-US', {
-                                    hour: 'numeric',
-                                })
-                            }}
-                        </p>
-                        <img
-                            class="w-auto h-[50px] object-cover"
-                            :src="`http://openweathermap.org/img/wn/${weatherData.data.list[i].weather[0].icon}@2x.png`"
-                            alt=""
-                        />
-                        <p class="text-xl">
-                            {{
-                                Math.round(weatherData.data.list[i].main.temp)
-                            }}&deg; C
-                        </p>
+        <div class="max-w-screen-md w-full py-12 responsive-text">
+            <div class="mx-8 text-white">
+                <h2 class="mb-4">Hourly Weather</h2>
+                <div class="flex items-center justify-center">
+                    <div class="flex gap-10 items-center">
+                        <div
+                            v-for="i in 5"
+                            :key="weatherData.data.list[i].dt"
+                            class="flex flex-col gap-4 items-center"
+                        >
+                            <p class="whitespace-nowrap">
+                                {{
+                                    new Date(
+                                        weatherData.data.list[i].dt * 1000
+                                    ).toLocaleTimeString('en-US', {
+                                        hour: 'numeric',
+                                    })
+                                }}
+                            </p>
+                            <img
+                                class="w-auto h-[50px] object-cover"
+                                :src="`http://openweathermap.org/img/wn/${weatherData.data.list[i].weather[0].icon}@2x.png`"
+                                alt=""
+                            />
+                            <p>
+                                {{
+                                    Math.round(
+                                        weatherData.data.list[i].main.temp
+                                    )
+                                }}&deg; C
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,7 +86,7 @@
 
         <div class="max-w-screen-md w-full py-12">
             <div class="mx-8 text-white">
-                <h2 class="mb-4">7 Day Forecast</h2>
+                <h2 class="mb-4">4 Day Forecast</h2>
                 <div
                     v-for="i in 4"
                     :key="weatherData.data.list[i].dt"
@@ -148,4 +152,17 @@ const getWeatherData = async () => {
     }
 }
 const weatherData = await getWeatherData()
+
 </script>
+
+<style scoped>
+.responsive-text {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .responsive-text {
+        font-size: 14px;
+    }
+}
+</style>

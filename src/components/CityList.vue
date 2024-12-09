@@ -12,10 +12,10 @@
                     city.lon === route.params.lon
                 ),
             }"
-            class="flex-grow flex justify-center py-3 shadow-md cursor-pointer"
+            class="flex-grow flex justify-center py-3 shadow-md cursor-pointer responsive-text"
             @click="previewCity(city.lat, city.lon)"
         >
-            <h3>{{ city.cityName }}, {{ city.country }}</h3>
+            <p>{{ city.cityName }}, {{ city.country }}</p>
         </div>
     </div>
 </template>
@@ -57,3 +57,15 @@ const previewCity = (lat, lon) => {
     })
 }
 </script>
+
+<style scoped>
+.responsive-text {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .responsive-text {
+        font-size: 14px;
+    }
+}
+</style>

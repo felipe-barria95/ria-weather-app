@@ -9,7 +9,7 @@
                 class="py-2 px-1 w-full bg-transparent border-b •focus: border-weather-secondary focus: outline-none focus: shadow-[Opx_1px_0_0_#004E71]"
             />
             <ul
-                class="absolute text-white w-full shadow-md py-2 px-1 top-[66]"
+                class="absolute bg-white text-weather-secondary w-full shadow-md py-2 px-1 top-[66]"
                 v-if="mapboxSearchResults"
             >
                 <p v-if="searchError">
@@ -79,9 +79,11 @@ const getSearchResults = () => {
 }
 
 const previewCity = (lat, lon) => {
+    searchQuery.value = '';
+    mapboxSearchResults.value = null;
     router.push({
         name: 'cityView',
         params: { lat, lon },
-    })
-}
+    });
+};
 </script>
