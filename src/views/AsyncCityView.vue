@@ -39,24 +39,24 @@
             <div class="flex flex-col flex-1 items-center">
                 <div class="flex gap-10 overflow-x-scroll">
                     <div
-                        v-for="hourData in weatherData.data.list.slice(0, 7)"
-                        :key="hourData.dt"
+                        v-for="i in 8"
+                        :key="weatherData.data.list[i].dt"
                         class="flex flex-col gap-4 items-center"
                     >
                         <p class="whitespace-nowrap text-md">
                             {{
-                                new Date(hourData.dt * 1000).toLocaleTimeString("en-US", {
+                                new Date(weatherData.data.list[i].dt * 1000).toLocaleTimeString("en-US", {
                                     hour: "numeric"
                                 })
                             }}
                         </p>
                         <img
                             class="w-auto h-[50px] object-cover"
-                            :src="`http://openweathermap.org/img/wn/${hourData.weather[0].icon}@2x.png`"
+                            :src="`http://openweathermap.org/img/wn/${weatherData.data.list[i].weather[0].icon}@2x.png`"
                             alt=""
                         />
                         <p class="text-xl">
-                            {{ Math.round(hourData.main.temp) }}&deg; C
+                            {{ Math.round(weatherData.data.list[i].main.temp) }}&deg; C
                         </p>
                     </div>
                 </div>
@@ -64,6 +64,36 @@
         </div>
 
         <hr class="border-white border-opacity-10 border w-full" />
+
+        <div class="max-w-screen-md w-full py-12">
+            <div class="mx-8 text-white">
+                <h2 class="mb-4">7 Day Forecast</h2>
+                <div
+                    v-for="i in 4"
+                    :key="weatherData.data.list[i].dt"
+                    class="flex items-center"
+                >
+                <p class="flex-1">
+                    {{
+                        new Date(weatherData.data.list[8*i].dt * 1000).toLocaleDateString(
+                            "en-US", {
+                                weekday: "long",
+                            }
+                        )
+                    }}
+                </p>
+                <img
+                    class="w-[50px] h-[50pxl object-cover"
+                    :src="`http://openweathermap.org/img/wn/${weatherData.data.list[8*i].weather[0].icon}@2x.png`"
+                    alt=""
+                />
+                <div class="flex gap-2 justify-end">
+                    <p>&uarr;{{ weatherData.data.list[8*i].main.temp_min }}&deg; C</p>
+                    <p>&darr;{{ weatherData.data.list[8*i].main.temp_max }}&deg; C</p>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
