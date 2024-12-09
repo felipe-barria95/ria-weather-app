@@ -44,7 +44,7 @@
                 <div class="flex items-center justify-center">
                     <div class="flex gap-10 items-center">
                         <div
-                            v-for="i in 5"
+                            v-for="i in hourRange"
                             :key="weatherData.list[i].dt"
                             class="flex flex-col gap-4 items-center"
                         >
@@ -119,6 +119,7 @@
 defineProps({
     weatherData: Object,
 })
+const hourRange = window.innerWidth <= 768 ? 5 : 7
 </script>
 
 <style scoped>
