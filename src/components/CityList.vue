@@ -29,8 +29,8 @@
 
     const previewCity = (lat, lon) => {
         router.push({
-        name: "cityView",
-        params: { lat, lon },
-        })
+            name: "cityView",
+            params: { lat, lon },
+        });
     };
 </script>
