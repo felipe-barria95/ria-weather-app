@@ -102,11 +102,11 @@
     import { useRoute } from 'vue-router';
 
     const route = useRoute();
-    console.log(route.params.lat, route.params.lon);
     const APIKey = "482944e26d320a80bd5e4f23b3de7d1f";
     const getWeatherData = async () => {
         try {
             const weatherData = await axios.get(`/weathermapapi/data/2.5/forecast?lat=${route.params.lat}&lon=${route.params.lon}&appid=${APIKey}&units=metric`);
+            await new Promise((res) => setTimeout (res, 1000));
             const offsetSeconds = weatherData.data.city.timezone;
             const currentDate = new Date();
             const adjustedDate = new Date(currentDate.getTime() + offsetSeconds * 1000);
