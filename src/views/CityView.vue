@@ -8,7 +8,6 @@
 </template>
 
 <script setup>
-    import CityViewSkeleton from './CityViewSkeleton.vue';
-    import AsyncCityView from './AsyncCityView.vue';
-
+import CityViewSkeleton from './CityViewSkeleton.vue'
+import AsyncCityView from './AsyncCityView.vue'
 </script>
