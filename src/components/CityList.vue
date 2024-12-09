@@ -3,7 +3,10 @@
         <div
             v-for="city in cities"
             :key="city.id"
-            :class="{'bg-weather-selected': city.lat === route.params.lat, 'bg-weather-secondary': !city.lat === route.params.lat}"
+            :class="{
+                'bg-weather-selected': city.lat === route.params.lat && city.lon === route.params.lon, 
+                'bg-weather-secondary': !(city.lat === route.params.lat && city.lon === route.params.lon)
+            }"
             class="flex-grow flex justify-center py-3 shadow-md cursor-pointer"
             @click="previewCity(city.lat, city.lon)"
         >
@@ -13,9 +16,10 @@
 </template>
 
 <script setup>
-    import { useRouter } from 'vue-router';
+    import { useRouter, useRoute } from 'vue-router';
 
     const router = useRouter();
+    const route = useRoute();
 
     const cities = [
         {id: 524, cityName: 'Rio de Janeiro', country: 'Brazil', lat: '-22.90278', lon: '-43.2075'},
