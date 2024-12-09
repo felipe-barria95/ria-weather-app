@@ -77,16 +77,16 @@
 
         <div class="max-w-screen-md w-full py-12">
             <div class="mx-8 text-white">
-                <h2 class="mb-4">4 Day Forecast</h2>
+                <h2 class="mb-4">5 Day Forecast</h2>
                 <div
-                    v-for="i in 4"
-                    :key="weatherData.list[i].dt"
+                    v-for="i in 5"
+                    :key="weatherData.list[(8 * i) - 1].dt"
                     class="flex items-center"
                 >
                     <p class="flex-1">
                         {{
                             new Date(
-                                weatherData.list[8 * i].dt * 1000
+                                weatherData.list[(8 * i) - 1].dt * 1000
                             ).toLocaleDateString('en-US', {
                                 weekday: 'long',
                             })
@@ -94,18 +94,18 @@
                     </p>
                     <img
                         class="w-[50px] h-[50pxl object-cover"
-                        :src="`http://openweathermap.org/img/wn/${weatherData.list[8 * i].weather[0].icon}@2x.png`"
+                        :src="`http://openweathermap.org/img/wn/${weatherData.list[(8 * i) - 1].weather[0].icon}@2x.png`"
                         alt=""
                     />
                     <div class="flex gap-2 justify-end">
                         <p>
                             &uarr;{{
-                                weatherData.list[8 * i].main.temp_min
+                                Math.round(weatherData.list[(8 * i) - 1].main.temp_min)
                             }}&deg; C
                         </p>
                         <p>
                             &darr;{{
-                                weatherData.list[8 * i].main.temp_max
+                                Math.round(weatherData.list[(8 * i) - 1].main.temp_max)
                             }}&deg; C
                         </p>
                     </div>
