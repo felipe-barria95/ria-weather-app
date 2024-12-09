@@ -1,10 +1,13 @@
 <template>
-    <header class="sticky top-0 bg-weather-primary shadow-lg">
-        <nav class="container flex flex-col sm:flex-row items-center gap-4 text-white py-6">
+    <header class="sticky top-0 bg-white shadow-lg">
+        <nav class="container flex flex-col sm:flex-row items-center gap-4 text-weather-primary py-6">
             <RouterLink :to="{ name: 'home' }">
                 <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-sun text-2xl"></i>
-                    <p class="text-2xl">RIA Weather App</p>
+                    <img
+                        class="w-[50px] h-auto"
+                        src="https://getvectorlogo.com/wp-content/uploads/2022/07/ria-money-transfer-vector-logo-2022.png"
+                    />
+                    <p class="text-2xl">Weather App</p>
                 </div>
             </RouterLink>
             <div class="flex gap-3 flex-1 justify-end">

@@ -106,7 +106,7 @@
     const APIKey = "482944e26d320a80bd5e4f23b3de7d1f";
     const getWeatherData = async () => {
         try {
-            const weatherData = await axios.get(`/weathermapapi/data/2.5/forecast?lat=-22.90278&lon=-43.2075&appid=${APIKey}&units=metric`);
+            const weatherData = await axios.get(`/weathermapapi/data/2.5/forecast?lat=${route.params.lat}&lon=${route.params.lon}&appid=${APIKey}&units=metric`);
             const offsetSeconds = weatherData.data.city.timezone;
             const currentDate = new Date();
             const adjustedDate = new Date(currentDate.getTime() + offsetSeconds * 1000);

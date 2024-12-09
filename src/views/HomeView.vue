@@ -29,6 +29,7 @@
         </template>
       </ul>
     </div>
+    <CityList />
   </main>
 </template>
 
@@ -36,6 +37,7 @@
   import axios from 'axios';
   import { ref } from 'vue';
   import { useRouter } from 'vue-router';
+  import CityList from '@/components/CityList.vue';
 
   const router = useRouter();
   const searchQuery = ref('');
@@ -53,7 +55,7 @@
           const filteredResults = CSVResultArray.filter((row) => row.includes(searchQuery.value)).slice(0, 10);
           const parsedResults = filteredResults.map((res) => {
             const sep = res.split(',');
-            return {cityName: sep[1], country: sep[4], lat: sep[5], lon: sep[6]}
+            return {id: sep[0], cityName: sep[1], country: sep[4], lat: sep[5], lon: sep[6]}
           });
           mapboxSearchResults.value = parsedResults;
         } catch {
