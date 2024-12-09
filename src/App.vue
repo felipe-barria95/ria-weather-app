@@ -7,6 +7,7 @@
         <component :is="Component" />
       </Transition>
     </RouterView>
+    <FooterBar />
   </div>
  </template>
 
@@ -14,6 +15,7 @@
   import { RouterView } from 'vue-router';
   import NavigationBar from './components/NavigationBar.vue'
   import SearchView from './views/SearchView.vue';
+  import FooterBar from './components/FooterBar.vue';
 </script>
 
 <style>
