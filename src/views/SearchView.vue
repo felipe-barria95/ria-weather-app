@@ -5,8 +5,8 @@
                 type="text"
                 v-model="searchQuery"
                 @input="getSearchResults"
-                placeholder="Search for a city"
-                class="py-2 px-1 w-full bg-transparent border-b •focus: border-weather-secondary focus: outline-none focus: shadow-[Opx_1px_0_0_#004E71]"
+                placeholder="Search for a city or country"
+                class="py-2 px-1 w-full bg-transparent border-b border-weather-secondary focus: outline-none focus: shadow-[Opx_1px_0_0_#004E71]"
             />
             <ul
                 class="absolute bg-white text-weather-secondary w-full shadow-md py-2 px-1 top-[66]"
@@ -56,7 +56,7 @@ const getSearchResults = () => {
                 )
                 const CSVResultArray = result.data.split('\n')
                 const filteredResults = CSVResultArray.filter((row) =>
-                    row.includes(searchQuery.value)
+                    row.toLowerCase().includes(searchQuery.value.toLowerCase())
                 ).slice(0, 10)
                 const parsedResults = filteredResults.map((res) => {
                     const sep = res.split(',')
