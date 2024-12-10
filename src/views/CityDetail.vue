@@ -7,14 +7,15 @@
             </h1>
             <p class="text-sm mb-12">
                 {{
-                    new Date(weatherData.current).toLocaleDateString('en-us', {
+                    new Date(weatherData.current).toLocaleDateString('en-US', {
                         weekday: 'short',
                         day: '2-digit',
                         month: 'long',
+                        timeZone: 'UTC',
                     })
                 }}
                 {{
-                    new Date(weatherData.current).toLocaleTimeString('en-us', {
+                    new Date(weatherData.current).toLocaleTimeString('en-US', {
                         hour: '2-digit',
                         minute: '2-digit',
                         timeZone: 'UTC',
