@@ -43,34 +43,32 @@
         <div class="max-w-screen-md w-full py-12 responsive-text">
             <div class="mx-8 text-white">
                 <h2 class="mb-4">Hourly Weather</h2>
-                <div class="flex items-center justify-center">
-                    <div class="flex gap-4 items-center">
-                        <div
-                            v-for="i in hourRange"
-                            :key="weatherData.list[i].dt"
-                            class="flex flex-col gap-4 items-center"
-                        >
-                            <p class="whitespace-nowrap">
-                                {{
-                                    new Date(
-                                        weatherData.list[i].dt * 1000 + weatherData.offsetSeconds * 1000
-                                    ).toLocaleTimeString('en-US', {
-                                        hour: 'numeric',
-                                        timeZone: 'UTC',
-                                    })
-                                }}
-                            </p>
-                            <img
-                                class="w-auto h-[50px] object-cover"
-                                :src="`http://openweathermap.org/img/wn/${weatherData.list[i].weather[0].icon}@2x.png`"
-                                alt=""
-                            />
-                            <p>
-                                {{
-                                    Math.round(weatherData.list[i].main.temp)
-                                }}&deg; C
-                            </p>
-                        </div>
+                <div class="flex flex-row items-center justify-between h-full">
+                    <div
+                        v-for="i in hourRange"
+                        :key="weatherData.list[i].dt"
+                        class="flex flex-col gap-4 items-center"
+                    >
+                        <p class="whitespace-nowrap">
+                            {{
+                                new Date(
+                                    weatherData.list[i].dt * 1000 + weatherData.offsetSeconds * 1000
+                                ).toLocaleTimeString('en-US', {
+                                    hour: 'numeric',
+                                    timeZone: 'UTC',
+                                })
+                            }}
+                        </p>
+                        <img
+                            class="w-auto h-[50px] object-cover"
+                            :src="`http://openweathermap.org/img/wn/${weatherData.list[i].weather[0].icon}@2x.png`"
+                            alt=""
+                        />
+                        <p>
+                            {{
+                                Math.round(weatherData.list[i].main.temp)
+                            }}&deg; C
+                        </p>
                     </div>
                 </div>
             </div>
@@ -89,9 +87,10 @@
                     <p class="flex-1">
                         {{
                             new Date(
-                                weatherData.list[(8 * i) - 1].dt * 1000
+                                weatherData.list[(8 * i) - 1].dt * 1000 + weatherData.offsetSeconds * 1000
                             ).toLocaleDateString('en-US', {
                                 weekday: 'long',
+                                timeZone: 'UTC',
                             })
                         }}
                     </p>

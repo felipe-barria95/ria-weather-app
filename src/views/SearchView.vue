@@ -6,10 +6,10 @@
                 v-model="searchQuery"
                 @input="getSearchResults"
                 placeholder="Search for a city or country"
-                class="py-2 px-1 w-full bg-transparent border-b border-weather-secondary focus: outline-none focus: shadow-[Opx_1px_0_0_#004E71]"
+                class="py-2 px-1 w-full bg-transparent border-b border-white focus: outline-none focus: shadow-[Opx_1px_0_0_#004E71]"
             />
             <ul
-                class="absolute bg-white text-weather-secondary w-full shadow-md py-2 px-1 top-[66]"
+                class="bg-white text-weather-secondary w-full shadow-md py-2 px-1"
                 v-if="mapboxSearchResults"
             >
                 <p v-if="searchError">
