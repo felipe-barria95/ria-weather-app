@@ -24,11 +24,17 @@ cd ria-weather-app
 npm install
 ```
 
-3. Start the development server:
+3. Add .env file with API_KEY in project base dir:
+```bash
+VITE_API_KEY=482944e26d320a80bd5e4f23b3de7d1f
+```
+
+4. Start the development server:
 ```bash
 npm run dev
 ```
-4. Open the app in your browser:
+
+5. Open the app in your browser:
 ```bash
 http://localhost:5173
 ```
