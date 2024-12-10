@@ -52,7 +52,8 @@
                         <p class="whitespace-nowrap">
                             {{
                                 new Date(
-                                    weatherData.list[i].dt * 1000 + weatherData.offsetSeconds * 1000
+                                    weatherData.list[i].dt * 1000 +
+                                        weatherData.offsetSeconds * 1000
                                 ).toLocaleTimeString('en-US', {
                                     hour: 'numeric',
                                     timeZone: 'UTC',
@@ -65,9 +66,8 @@
                             alt=""
                         />
                         <p>
-                            {{
-                                Math.round(weatherData.list[i].main.temp)
-                            }}&deg; C
+                            {{ Math.round(weatherData.list[i].main.temp) }}&deg;
+                            C
                         </p>
                     </div>
                 </div>
@@ -81,13 +81,14 @@
                 <h2 class="mb-4">5 Day Forecast</h2>
                 <div
                     v-for="i in 5"
-                    :key="weatherData.list[(8 * i) - 1].dt"
+                    :key="weatherData.list[8 * i - 1].dt"
                     class="flex items-center"
                 >
                     <p class="flex-1">
                         {{
                             new Date(
-                                weatherData.list[(8 * i) - 1].dt * 1000 + weatherData.offsetSeconds * 1000
+                                weatherData.list[8 * i - 1].dt * 1000 +
+                                    weatherData.offsetSeconds * 1000
                             ).toLocaleDateString('en-US', {
                                 weekday: 'long',
                                 timeZone: 'UTC',
@@ -96,18 +97,22 @@
                     </p>
                     <img
                         class="w-[50px] h-[50pxl object-cover"
-                        :src="`http://openweathermap.org/img/wn/${weatherData.list[(8 * i) - 1].weather[0].icon}@2x.png`"
+                        :src="`http://openweathermap.org/img/wn/${weatherData.list[8 * i - 1].weather[0].icon}@2x.png`"
                         alt=""
                     />
                     <div class="flex gap-2 justify-end">
                         <p>
                             &uarr;{{
-                                Math.round(weatherData.list[(8 * i) - 1].main.temp_min)
+                                Math.round(
+                                    weatherData.list[8 * i - 1].main.temp_min
+                                )
                             }}&deg; C
                         </p>
                         <p>
                             &darr;{{
-                                Math.round(weatherData.list[(8 * i) - 1].main.temp_max)
+                                Math.round(
+                                    weatherData.list[8 * i - 1].main.temp_max
+                                )
                             }}&deg; C
                         </p>
                     </div>
@@ -123,4 +128,3 @@ defineProps({
 })
 const hourRange = window.innerWidth <= 768 ? 5 : 9
 </script>
-

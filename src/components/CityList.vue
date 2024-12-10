@@ -15,7 +15,9 @@
             class="flex-grow flex justify-center py-3 shadow-md cursor-pointer responsive-text"
             @click="previewCity(city.lat, city.lon)"
         >
-            <div class="flex responsive-item gap-1 justify-center center-content items-center">
+            <div
+                class="flex responsive-item gap-1 justify-center center-content items-center"
+            >
                 <p>{{ city.cityName }}</p>
                 <p>{{ city.country }}</p>
             </div>
@@ -62,7 +64,7 @@ const previewCity = (lat, lon) => {
 </script>
 
 <style scoped>
-  .responsive-item {
+.responsive-item {
     flex-direction: row;
 }
 
@@ -71,5 +73,4 @@ const previewCity = (lat, lon) => {
         flex-direction: column;
     }
 }
-
 </style>

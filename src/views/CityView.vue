@@ -3,7 +3,9 @@
         <CityViewSkeleton />
     </div>
     <div v-else>
-        <div class="flex justify-center text-white gap-4 items-center py-8 responsive-text">
+        <div
+            class="flex justify-center text-white gap-4 items-center py-8 responsive-text"
+        >
             <p>
                 Last Updated
                 {{
