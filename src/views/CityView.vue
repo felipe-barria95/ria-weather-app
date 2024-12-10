@@ -39,15 +39,15 @@ import axios from 'axios'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-const APIKey = '482944e26d320a80bd5e4f23b3de7d1f'
 const weatherData = ref(null)
 const isLoading = ref(false)
 const route = useRoute()
+const API_KEY = import.meta.env.VITE_API_KEY
 const getWeatherData = async (lat, lon) => {
     isLoading.value = true
     try {
         const response = await axios.get(
-            `/weathermapapi/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=metric`
+            `/weathermapapi/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
         )
         await new Promise((res) => setTimeout(res, 1000))
         const offsetSeconds = response.data.city.timezone
