@@ -78,7 +78,7 @@ const getSearchResults = () => {
             return
         }
         mapboxSearchResults.value = null
-    }, 500)
+    }, !result.value ? 500: 0)
 }
 
 const previewCity = (lat, lon) => {
