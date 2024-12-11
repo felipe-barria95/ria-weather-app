@@ -41,6 +41,7 @@ import { useRouter } from 'vue-router'
 import CityList from '@/components/CityList.vue'
 
 const router = useRouter()
+const result = ref(null);
 const searchQuery = ref('')
 const queryTimeout = ref(null)
 const mapboxSearchResults = ref(null)
@@ -51,10 +52,12 @@ const getSearchResults = () => {
     queryTimeout.value = setTimeout(async () => {
         if (searchQuery.value != '') {
             try {
-                const result = await axios.get(
-                    '/weatherbitapi/static/exports/cities_20000.csv'
-                )
-                const CSVResultArray = result.data.split('\n')
+                if (!result.value) {
+                    result.value = await axios.get(
+                        '/weatherbitapi/static/exports/cities_20000.csv'
+                    )
+                }
+                const CSVResultArray = result.value.data.split('\n')
                 const filteredResults = CSVResultArray.filter((row) =>
                     row.toLowerCase().includes(searchQuery.value.toLowerCase())
                 ).slice(0, 10)
